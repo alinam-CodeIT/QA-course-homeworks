@@ -1,0 +1,362 @@
+const prompt = require("prompt-sync")();
+
+let taskNumber = Number(prompt("Enter task number: "));
+
+if (taskNumber === 1) { 
+    task1();
+} else if (taskNumber === 2) { 
+    task2();
+} else if (taskNumber === 3) { 
+    task3();
+} else if (taskNumber === 4) { 
+    task4();
+} else if (taskNumber === 5) { 
+    task5();
+} else if (taskNumber === 6) { 
+    task6();
+} else if (taskNumber === 7) { 
+    task7();
+} else if (taskNumber === 8) { 
+    task8();
+} else if (taskNumber === 9) { 
+    task9();
+} else if (taskNumber === 10) { 
+    task10();
+} else { (console.log("This task doesn't exist"))
+}
+
+
+/* 1
+Напишіть програму, яка отримує вік користувача (збережіть у змінну) та виводить у консоль:
+"Дитина" — якщо вік менше 12
+"Підліток" — від 12 до 17 включно
+"Дорослий" — від 18 до 64 включно
+"Пенсіонер" — 65 і більше
+Використайте if / else if / else.
+ */
+
+function task1() {
+    console.log("Task 1");
+
+    let age = Number(prompt("Enter the Age of user: "));
+
+    if(Number.isFinite(age)){
+        if (age < 12){
+        console.log("Child")
+    } else if (age >= 12 && age <= 17){
+        console.log("Teenager")
+    } else if (age >= 18 && age <= 64){
+        console.log("Adult")
+    } else {
+        console.log("Senior")
+    }
+    } else console.log("Invalid age value.")
+
+    
+}
+
+/* QUESTION: Так як у нас немає обмеження на тип віку (ціле \ дробове), 
+             то який очікуваний результат для віку наприклад 17,5 або 64,5 ? */
+
+
+
+
+/* 2
+Є числова оцінка від 0 до 100. Використовуючи switch(true) та умови в case, виведіть літерну оцінку:
+90–100 → "A"
+70–89 → "B"
+50–69 → "C"
+0–49 → "F"
+ */
+
+function task2() {
+    console.log("Task 2");
+
+    let score = Number(prompt("Enter the Score to find the Grade: "));
+
+    switch (true) {
+    case (score >= 0 && score <= 49):
+        console.log('Grade F');
+        break;
+    case (score >= 50 && score <= 69):
+        console.log('Grade C');
+        break;
+    case (score >= 70 && score <= 89):
+        console.log('Grade B');
+        break;
+    case (score >= 90 && score <= 100):
+        console.log('Grade A');
+        break;
+    default:
+        console.log('Incorrect Score value');
+    }
+}
+
+
+
+/* 3
+Створіть змінну month з числом від 1 до 12. Використовуючи switch з групуванням (без break між певними case), виведіть назву сезону:
+12, 1, 2 → "Зима"
+3, 4, 5 → "Весна"
+6, 7, 8 → "Літо"
+9, 10, 11 → "Осінь"
+Якщо число не від 1 до 12, виведіть "Невірний місяць".
+ */
+
+function task3 () {
+    console.log("Task 3");
+
+    let month = Number(prompt("Enter the Month's number to find the Season: "));
+
+    switch (month) {
+        case 12:
+        case 1:
+        case 2:
+            console.log("Winter");
+            break;
+
+        case 3:
+        case 4:
+        case 5:
+            console.log("Spring");
+            break;
+
+        case 6:
+        case 7:
+        case 8:
+            console.log("Summer");
+            break;
+
+        case 9:
+        case 10:
+        case 11:
+            console.log("Autumn");
+            break;
+
+        default:
+            console.log("Incorrect Month value");
+    }
+}
+
+
+/* 4
+Використовуючи цикл for, виведіть числа від 1 до 30. Але:
+Якщо число ділиться на 3 — виведіть "Fizz"
+Якщо ділиться на 5 — виведіть "Buzz"
+Якщо ділиться і на 3, і на 5 — виведіть "FizzBuzz"
+Інакше — виведіть саме число
+ */
+
+function task4 () {
+    console.log("Task 4");
+
+    for (let number = 1; number <= 30; number++){
+        if (number % 3 === 0 && number % 5 === 0){
+            console.log("FizzBuzz");
+        } else if (number % 3 === 0){
+            console.log("Fizz");
+        } else if (number % 5 === 0){
+            console.log("Buzz");
+        } else {
+            console.log(number);
+        }
+    }
+}
+
+
+/* 5
+Дано число n (наприклад, 91). За допомогою циклу while 
+знайдіть його найменший дільник більший за 1. 
+Використайте break для виходу з циклу, як тільки дільник знайдено.
+ */
+
+function task5() {
+    console.log("Task 5");
+
+    let dividedNumber = Number(prompt("Enter the Number to find its least divisor: "));
+
+    if (!dividedNumber){
+        console.log("Invalid input");
+    } else { if (dividedNumber === 1){
+        console.log("1 has no divisors greater than 1");
+        }
+    }
+
+    let divisor = 2;
+
+    while (divisor <= dividedNumber){
+
+        if (dividedNumber % divisor === 0){
+            console.log("Least divisor of the ", dividedNumber, " is ", divisor);
+            break;
+        } else {
+            divisor++;
+        }
+    }
+}
+
+
+/* 6
+Виведіть усі числа від 1 до 100, які НЕ містять цифру 3 та цифру 7.
+Використайте continue для пропуску "нещасливих" чисел.
+ */
+
+function task6() {
+    console.log("Task 6");
+
+    for(let i = 1; i <= 100; i++){
+        let str = String(i);
+        
+        if (str.includes("3") || str.includes("7") ){
+            continue;
+        }
+
+        console.log(i);
+    }
+
+}
+
+/* 7
+Створіть функцію greet(name, greeting), яка повертає рядок привітання. 
+Якщо name не передано - використовувати "Гість", 
+якщо greeting не передано - "Привіт".
+ */
+
+function task7() {
+    console.log("Task 7");
+
+    function greet(name = "Guest", greeting = "Hello") {
+        return `${greeting}, ${name}!`;
+    }
+
+    console.log(greet());
+    console.log(greet("Alina"));
+    console.log(greet("Andrew", "What's Up"));
+    console.log(greet(undefined, "Howdy"));
+}
+
+/* 8
+Створіть змінну calculate. Використовуючи switch, 
+присвойте їй різні Function Expression в залежності від значення змінної operation:
+"add" → функція, яка повертає a + b
+"subtract" → функція, яка повертає a - b
+"multiply" → функція, яка повертає a * b
+"divide" → функція, яка повертає a / b (з перевіркою ділення на 0!)
+ */
+
+function task8() {
+    console.log("Task 8");
+
+    let calculate;
+    let operation = prompt("Enter the needed operation (add / subtract / multiply / divide): ").toLowerCase();
+
+    if (operation === "add" || operation === "subtract" || operation === "multiply" || operation === "divide"){
+        
+        let firstNumber = Number(prompt("Enter the first number: "));
+        let secondNumber = Number(prompt("Enter the second number: "));
+
+
+        if (Number.isFinite(firstNumber) && Number.isFinite(secondNumber)){
+
+            switch (operation) {
+                case "add":
+                    calculate = function (a, b) {
+
+                        return a + b;
+
+                    }
+                    break;
+
+                case "subtract":
+                    calculate = function (a, b) {
+
+                        return a - b;
+
+                    }
+                    break;
+
+                case "multiply":
+                    calculate = function (a, b) {
+
+                        return a * b;
+
+                    }
+                    break;
+
+                case "divide":
+                    calculate = function (a, b) {
+                        if (b != 0) {
+                            return a / b;
+
+                        } else {
+                            console.log("The division by 0 is impossible.");
+                            return null;
+                        }
+                    }
+                    break;
+            }
+
+            console.log(firstNumber , operation, secondNumber, "=>", calculate(firstNumber, secondNumber));
+
+        } else console.log ("Invalid input");
+
+    } else console.log("Unknown operation");
+
+}
+
+/* 9
+Напишіть функцію repeatAction(n, callback), яка викликає передану функцію callback рівно n разів, 
+передаючи їй поточний номер ітерації (починаючи з 1).
+ */
+
+function task9() {
+    console.log("Task 9");
+
+    let n = Number(prompt("Enter the number of iterations: "))
+
+    if (n > 0){
+        function repeatAction(n, callback){
+            let iteration = 1;
+            while (iteration <= n){
+                callback(iteration++);
+            }
+        }
+
+        repeatAction (n, console.log);
+    }
+    else console.log ("Invalid input. The number of iteration must be a positive integer value.");
+
+}
+
+
+/* 10
+Напишіть функцію generatePassword(length), 
+яка генерує випадковий пароль заданої довжини із букв (великих та малих) і цифр. 
+За замовчуванням довжина — 8 символів.
+ */
+
+// Перевірка на унікальність рандомних символів не додана, так як не було такої умови
+
+function task10 (){
+    console.log("Task 10");
+
+    let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    let length = Number(prompt("Enter the Length of random password (default 8): "));
+
+    if (!length || length < 0) {
+        length = 8;
+    }
+
+    function generatePassword (length){
+        let password = "";
+
+        for (let i = 0; i < length; i++) {
+            let index = Math.floor(Math.random() * characters.length);
+            password += characters[index];
+        }
+        return password;
+    }
+
+    console.log(generatePassword(length));
+}
